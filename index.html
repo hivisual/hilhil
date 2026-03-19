@@ -13,6 +13,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
+/* ================================================
+   DESIGN TOKENS — Dusty Rose · Parchment · Gold
+   ================================================ */
 :root {
   --rose:     #C8929A;
   --rose-d:   #A67078;
@@ -25,28 +28,115 @@
   --ink-m:    #5C4848;
   --ink-l:    #8A7070;
   --white:    #FEFEFE;
+
   --f-display: 'Cormorant Garamond', Georgia, serif;
   --f-body:    'DM Sans', system-ui, sans-serif;
+
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-in:  cubic-bezier(0.4, 0, 1, 1);
   --ease:     cubic-bezier(0.4, 0, 0.2, 1);
+
   --radius-sm: 12px;
   --radius:    24px;
   --radius-lg: 40px;
 }
+
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
 html { height: 100%; -webkit-font-smoothing: antialiased; }
-body { min-height: 100%; font-family: var(--f-body); font-size: 15px; line-height: 1.75; color: var(--ink-m); background: var(--cream); overflow-x: hidden; }
-body::before { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events: none; z-index: 9999; mix-blend-mode: multiply; }
-.app { display: flex; flex-direction: column; align-items: center; min-height: 100vh; padding: 0 0 120px; }
-.who-tag { margin: 32px auto 0; display: inline-flex; align-items: center; gap: 8px; padding: 8px 20px; background: var(--paper); border: 1px solid var(--rose-l); border-radius: 999px; font-family: var(--f-display); font-size: 14px; font-style: italic; color: var(--rose-d); letter-spacing: 0.5px; }
+
+body {
+  min-height: 100%;
+  font-family: var(--f-body);
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--ink-m);
+  background: var(--cream);
+  overflow-x: hidden;
+}
+
+/* ────────────── NOISE TEXTURE OVERLAY ────────────── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: multiply;
+}
+
+/* ────────────── LAYOUT ────────────── */
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding: 0 0 120px;
+}
+
+/* ────────────── HEADER TAG ────────────── */
+.who-tag {
+  margin: 32px auto 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 20px;
+  background: var(--paper);
+  border: 1px solid var(--rose-l);
+  border-radius: 999px;
+  font-family: var(--f-display);
+  font-size: 14px;
+  font-style: italic;
+  color: var(--rose-d);
+  letter-spacing: 0.5px;
+}
 .who-tag::before { content: '❧'; font-style: normal; }
 .who-tag::after  { content: '❧'; font-style: normal; }
-.stage { width: 100%; display: flex; justify-content: center; align-items: center; padding: 24px 16px 8px; perspective: 1200px; }
-.card { width: min(680px, 92vw); min-height: clamp(440px, 66vh, 560px); background: var(--white); border-radius: var(--radius); position: relative; overflow: hidden; box-shadow: 0 2px 0 rgba(201,169,110,.2), 0 8px 24px rgba(46,32,32,.04), 0 24px 60px rgba(46,32,32,.07), 0 64px 120px rgba(46,32,32,.05); border: 1px solid rgba(201,169,110,.25); transform-origin: center bottom; }
-.card::before, .card::after { content: ''; position: absolute; width: 40px; height: 40px; border-color: var(--gold-l); border-style: solid; pointer-events: none; z-index: 2; opacity: .6; }
+
+/* ────────────── STAGE ────────────── */
+.stage {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px 16px 8px;
+  perspective: 1200px;
+}
+
+/* ────────────── CARD ────────────── */
+.card {
+  width: min(680px, 92vw);
+  min-height: clamp(440px, 66vh, 560px);
+  background: var(--white);
+  border-radius: var(--radius);
+  position: relative;
+  overflow: hidden;
+  box-shadow:
+    0 2px 0 rgba(201,169,110,.2),
+    0 8px 24px rgba(46,32,32,.04),
+    0 24px 60px rgba(46,32,32,.07),
+    0 64px 120px rgba(46,32,32,.05);
+
+  border: 1px solid rgba(201,169,110,.25);
+  transform-origin: center bottom;
+}
+
+.card::before, .card::after {
+  content: '';
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border-color: var(--gold-l);
+  border-style: solid;
+  pointer-events: none;
+  z-index: 2;
+  opacity: .6;
+}
 .card::before { top: 18px; left: 18px; border-width: 1px 0 0 1px; border-radius: 4px 0 0 0; }
 .card::after  { bottom: 18px; right: 18px; border-width: 0 1px 1px 0; border-radius: 0 0 4px 0; }
+
+/* ────────────── PAGE ANIMATIONS ────────────── */
 @keyframes fadeUp   { from { opacity:0; transform:translateY(24px) } to { opacity:1; transform:none } }
 @keyframes fadeIn   { from { opacity:0 } to { opacity:1 } }
 @keyframes slideIn  { from { opacity:0; transform:translateX(30px) } to { opacity:1; transform:none } }
@@ -59,17 +149,24 @@ body::before { content: ''; position: fixed; inset: 0; background-image: url("da
 @keyframes letterReveal { from { opacity:0; transform:translateY(12px) } to { opacity:1; transform:none } }
 @keyframes sealPop { 0%{transform:scale(0) rotate(-15deg);opacity:0} 70%{transform:scale(1.15) rotate(3deg)} 100%{transform:scale(1) rotate(0deg);opacity:1} }
 @keyframes unfold { from { opacity:0; transform: scaleY(0.6) translateY(-20px) } to { opacity:1; transform: none } }
+
 .anim-fadeUp  { animation: fadeUp  .7s var(--ease-out) both }
 .anim-fadeIn  { animation: fadeIn  .6s ease both }
 .anim-slideIn { animation: slideIn .6s var(--ease-out) both }
 .anim-scaleIn { animation: scaleIn .5s var(--ease-out) both }
+
+/* ────────────── TYPOGRAPHY ────────────── */
 .display { font-family: var(--f-display); font-size: clamp(28px, 6vw, 42px); font-weight: 400; line-height: 1.2; color: var(--ink); letter-spacing: -.3px; }
 .display.italic { font-style: italic; }
 .heading { font-family: var(--f-display); font-size: clamp(20px, 4vw, 28px); font-weight: 600; color: var(--ink); line-height: 1.3; }
 .subtext { font-size: 14.5px; color: var(--ink-l); line-height: 1.8; }
 .body-text { font-size: 15px; color: var(--ink-m); line-height: 1.85; }
+
+/* ────────────── DIVIDER ────────────── */
 .ornament-line { display: flex; align-items: center; gap: 12px; color: var(--gold); font-size: 16px; opacity: .6; }
 .ornament-line::before, .ornament-line::after { content: ''; flex: 1; height: 1px; background: linear-gradient(90deg, transparent, var(--gold-l), transparent); }
+
+/* ────────────── BUTTONS ────────────── */
 .btn { appearance: none; border: none; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; border-radius: 999px; font-family: var(--f-body); font-size: 14px; font-weight: 500; letter-spacing: .3px; transition: all .2s var(--ease); position: relative; overflow: hidden; }
 .btn::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(255,255,255,.2), transparent); pointer-events: none; }
 .btn-primary { background: linear-gradient(135deg, var(--rose), var(--rose-d)); color: #fff; box-shadow: 0 4px 20px rgba(200,146,154,.35), 0 1px 0 rgba(255,255,255,.2) inset; }
@@ -77,6 +174,8 @@ body::before { content: ''; position: fixed; inset: 0; background-image: url("da
 .btn-primary:active { transform: translateY(0); }
 .btn-ghost { background: transparent; color: var(--rose-d); border: 1.5px solid var(--rose-l); box-shadow: 0 2px 8px rgba(200,146,154,.1); }
 .btn-ghost:hover { background: var(--rose-l); border-color: var(--rose); }
+
+/* ────────────── BOTTOM NAV ────────────── */
 .navwrap { position: fixed; bottom: clamp(16px, env(safe-area-inset-bottom,0px) + 20px, 36px); left: 0; right: 0; display: flex; justify-content: center; z-index: 100; pointer-events: none; }
 .nav-inner { pointer-events: auto; display: flex; align-items: center; gap: 20px; padding: 10px 20px; background: rgba(250,247,242,.92); backdrop-filter: blur(16px) saturate(1.4); border: 1px solid rgba(201,169,110,.2); border-radius: 999px; box-shadow: 0 8px 32px rgba(46,32,32,.1), 0 2px 0 rgba(255,255,255,.8) inset; }
 .nav-btn { width: 44px; height: 44px; border-radius: 50%; border: 1.5px solid var(--rose-l); background: var(--white); color: var(--ink-m); font-size: 16px; cursor: pointer; display: grid; place-items: center; transition: all .2s var(--ease); box-shadow: 0 2px 8px rgba(0,0,0,.04); }
@@ -85,8 +184,12 @@ body::before { content: ''; position: fixed; inset: 0; background-image: url("da
 .nav-count { font-family: var(--f-display); font-size: 15px; font-style: italic; color: var(--ink-m); min-width: 54px; text-align: center; letter-spacing: .5px; }
 .progress-bar { position: absolute; bottom: calc(100% + 10px); left: 50%; transform: translateX(-50%); width: min(680px, 88vw); height: 3px; background: rgba(200,146,154,.15); border-radius: 999px; overflow: hidden; }
 .progress-fill { height: 100%; background: linear-gradient(90deg, var(--rose), var(--gold)); border-radius: 999px; transition: width .4s var(--ease-out); }
+
+/* ────────────── MUSIC BTN ────────────── */
 .music-btn { position: fixed; top: 20px; right: 20px; z-index: 200; width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(201,169,110,.25); background: rgba(250,247,242,.9); backdrop-filter: blur(8px); font-size: 18px; cursor: pointer; display: none; place-items: center; box-shadow: 0 4px 16px rgba(0,0,0,.08); transition: transform .2s; }
 .music-btn:hover { transform: scale(1.08); }
+
+/* ────────────── PAGE CONTENTS ────────────── */
 .cover-wrap { position: relative; width: 100%; height: 100%; min-height: inherit; display: grid; place-items: center; overflow: hidden; }
 .cover-bg { position: absolute; inset: 0; background-size: cover; background-position: center; filter: brightness(.75) saturate(.85); transform: scale(1.05); transition: transform 8s ease; }
 .cover-bg.loaded { transform: scale(1); }
@@ -161,8 +264,6 @@ footer { font-size: 12.5px; color: var(--ink-l); text-align: center; padding: 16
   gap: 0;
   position: relative;
 }
-
-/* Subtle background watermark */
 .gift-letter-wrap::before {
   content: '🎁';
   position: absolute;
@@ -174,7 +275,6 @@ footer { font-size: 12.5px; color: var(--ink-l); text-align: center; padding: 16
   line-height: 1;
   filter: grayscale(1);
 }
-
 .letter-label {
   font-family: var(--f-display);
   font-style: italic;
@@ -194,7 +294,6 @@ footer { font-size: 12.5px; color: var(--ink-l); text-align: center; padding: 16
   height: 1px;
   background: linear-gradient(90deg, var(--gold-l), transparent);
 }
-
 .letter-body {
   font-family: var(--f-display);
   font-style: italic;
@@ -204,20 +303,17 @@ footer { font-size: 12.5px; color: var(--ink-l); text-align: center; padding: 16
   color: var(--ink-m);
   margin-bottom: 28px;
 }
-
 .letter-body span {
   display: inline;
   opacity: 0;
   animation: letterReveal .5s var(--ease-out) both;
 }
-
 .letter-highlight {
   color: var(--ink);
   font-weight: 400;
   border-bottom: 1px solid var(--gold-l);
   padding-bottom: 1px;
 }
-
 .letter-footer {
   display: flex;
   align-items: center;
@@ -226,7 +322,6 @@ footer { font-size: 12.5px; color: var(--ink-l); text-align: center; padding: 16
   border-top: 1px solid rgba(201,169,110,.2);
   animation: fadeUp .5s var(--ease-out) .6s both;
 }
-
 .letter-sig {
   font-family: var(--f-display);
   font-size: 18px;
@@ -234,7 +329,6 @@ footer { font-size: 12.5px; color: var(--ink-l); text-align: center; padding: 16
   font-weight: 400;
   color: var(--ink-l);
 }
-
 .letter-seal {
   width: 52px;
   height: 52px;
@@ -255,7 +349,6 @@ footer { font-size: 12.5px; color: var(--ink-l); text-align: center; padding: 16
   border-radius: 50%;
   border: 1px solid rgba(200,146,154,.2);
 }
-
 @media (max-width:480px) { .pad, .pad-center, .pad-stack { padding: 22px 20px; } }
 @media (prefers-reduced-motion:reduce) { *, *::before, *::after { animation-duration:.01ms !important; transition-duration:.01ms !important; } }
 </style>
@@ -276,7 +369,7 @@ footer { font-size: 12.5px; color: var(--ink-l); text-align: center; padding: 16
   <div class="progress-bar"><div class="progress-fill" id="progFill"></div></div>
   <div class="nav-inner">
     <button class="nav-btn" id="prevBtn" aria-label="sebelumnya">←</button>
-    <div class="nav-count" id="pageCount">1 / 19</div>
+    <div class="nav-count" id="pageCount">1 / 20</div>
     <button class="nav-btn" id="nextBtn" aria-label="berikutnya">→</button>
   </div>
 </div>
@@ -303,6 +396,7 @@ const C = {
     galeri: "assets/foto3.jpg",
     surat:  "assets/foto4.jpg",
   },
+  VIDEO:      "video1.mp4", // Video baru di halaman 18
   P1_COPY: "selamat ulang tahun, hilhill kesayanganku. hari ini aku mungkin ga bisa nemenin kamu tiup lilin secara langsung, tapi aku mau tulisan ini jadi peluk paling erat buat kamu dari jauh.",
   P2_COPY: "rute antara mojo dan bulungan mungkin tidak seberapa jauh, tapi bagiku jalan itu selalu menjadi rute terbaik karena membawaku pulang ke kamu. melihat bagaimana kita melewati semuanya dari desember kemarin sampai hari ini, aku sadar satu hal: hatiku sudah menemukan tempat perhentian akhirnya.",
   P3_COPY: "terima kasih karena sudah memilih untuk sabar, menemani aku berproses dari nol, dan selalu menjadi tempat paling nyaman untuk pulang 🤍",
@@ -342,7 +436,7 @@ const C = {
   CLOSING: "halaman ini mungkin udah selesai, tapi cerita kita tidak akan pernah berhenti di sini. setiap kata yang tertulis adalah pengingat bahwa kamu sangat berharga. terima kasih sudah bertahan, terima kasih sudah jujur, dan terima kasih sudah menjadi hilhill yang aku kenal. semoga tahun ini membawa kita pada hari di mana jarak bukan lagi sebuah masalah. selamat ulang tahun, kesayanganku 🤍",
 };
 
-const TOTAL = 19;
+const TOTAL = 20; // Halaman bertambah jadi 20 karena ada video
 let page    = Number(localStorage.getItem('__p') || 1);
 let answers = JSON.parse(localStorage.getItem('__qa') || 'null') || Array(C.KUIS.length).fill(null);
 
@@ -657,9 +751,6 @@ function p15() {
   setTimeout(()=>{ const el=document.getElementById('prayer'); if(el) typewrite(el, C.PRAYER, 30); }, 400);
 }
 
-// ════════════════════════════════════
-//  PAGE 16: PERIHAL KADO — REDESIGN
-// ════════════════════════════════════
 function p16() {
   setHTML(`
     <div class="gift-letter-wrap">
@@ -667,8 +758,7 @@ function p16() {
       <div class="letter-label">perihal kado</div>
 
       <div class="letter-body" id="letterBody">
-        <!-- Lines revealed via JS for staggered effect -->
-      </div>
+        </div>
 
       <div class="letter-footer">
         <span class="letter-sig">— renren 🤍</span>
@@ -678,11 +768,9 @@ function p16() {
     </div>
   `);
 
-  // Letter content split into lines for staggered reveal
   const lines = [
     { text: "ada sesuatu yang harusnya kamu terima sayaang", delay: 100 },
-    { text: "", delay: 0 }, // spacer
-    
+    { text: "", delay: 0 },
     { text: "", delay: 0 },
     { text: "aku ingin kamu menerimanya", delay: 740 },
     { text: "pada waktu yang tepat, tunggu aja ya sayaang 🤍", delay: 860 },
@@ -704,7 +792,6 @@ function p16() {
       animation: letterReveal .55s cubic-bezier(0.16,1,0.3,1) both;
       animation-delay: ${line.delay}ms;
     `;
-    // Highlight key phrases
     const highlights = ["waktu yang tepat", "sungguh-sungguh berarti", "dalam perjalanan"];
     let content = line.text;
     highlights.forEach(phrase => {
@@ -736,6 +823,7 @@ function p17() {
       <p class="body-text anim-fadeUp" style="animation-delay:.3s;max-width:340px">${C.P18_COPY}</p>
     </div>
   `);
+
   const fw = document.getElementById('flameWrap');
   let startY = null;
   const onStart = e => { startY = (e.touches?.[0]||e).clientY; };
@@ -751,7 +839,24 @@ function p17() {
   $pg.addEventListener('touchend',     onEnd,   {passive:true});
 }
 
+// ════════════════════════════════════
+//  PAGE 18: VIDEO KHUSUS MARUKO
+// ════════════════════════════════════
 function p18() {
+  setHTML(`
+    <div class="pad-center" style="gap:20px">
+      <p class="subtext anim-fadeUp" style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13px;letter-spacing:2px;text-transform:uppercase">kejutan kecil 👧🏻</p>
+      
+      <div class="anim-scaleIn" style="width:100%; border-radius:16px; overflow:hidden; box-shadow:0 12px 48px rgba(0,0,0,.12); background:#1e1414;">
+        <video src="${C.VIDEO}" controls playsinline style="width:100%; display:block; object-fit:cover;"></video>
+      </div>
+
+      <p class="body-text anim-fadeUp" style="animation-delay:.2s; font-style:italic;">ada pesan spesial nih buat kamu wkwk</p>
+    </div>
+  `);
+}
+
+function p19() {
   setHTML(`
     <div style="position:relative;width:100%;height:100%;display:grid;place-items:center;overflow:hidden">
       <img src="${C.FOTO.kolase}" alt="penutup" loading="lazy" style="width:100%;height:100%;object-fit:cover;filter:brightness(.75)">
@@ -762,7 +867,7 @@ function p18() {
   `);
 }
 
-function p19() {
+function p20() {
   const wa = `https://wa.me/${C.NOMOR_WA}`;
   setHTML(`
     <div class="pad-center" style="gap:24px">
@@ -798,8 +903,9 @@ function render() {
     case 15: p15(); break;
     case 16: p16(); break;
     case 17: p17(); break;
-    case 18: p18(); break;
-    case 19: p19(); break;
+    case 18: p18(); break; // Halaman video
+    case 19: p19(); break; // Halaman kolase penutup
+    case 20: p20(); break; // Halaman pesan terakhir
     default: p1();
   }
   updateNav();
